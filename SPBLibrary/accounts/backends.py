@@ -42,6 +42,9 @@ class JWTAuthentication(authentication.BaseAuthentication):
         """
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+        except jwt.exceptions.ExpiredSignatureError:
+            msg = 'Authenticate Error. Old token. Login again'
+            raise exceptions.AuthenticationFailed(msg)
         except Exception:
             msg = f'Authenticate Error. Cannot decode token'
             raise exceptions.AuthenticationFailed(msg)

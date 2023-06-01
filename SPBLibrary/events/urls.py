@@ -12,5 +12,5 @@ routers = DefaultRouter()
 routers.register('', EventViewSet)
 
 urlpatterns = [
-    path('api/', include(routers.urls))
+    path('events/', include(routers.urls))
 ]

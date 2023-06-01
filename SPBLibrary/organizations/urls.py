@@ -13,5 +13,5 @@ routers = DefaultRouter()
 routers.register('', OrganizationsViewSet)
 
 urlpatterns = [
-    path('api/', include(routers.urls))
+    path('organizations/', include(routers.urls))
 ]

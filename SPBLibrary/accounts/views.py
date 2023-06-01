@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 from rest_framework.generics import RetrieveUpdateAPIView
 
 from .serializers import RegistrationSerializer, LoginSerializer, UserSerializer
-from .renderers import UserJSONRenderer
 
 
 class RegistrationApiView(APIView):
@@ -17,7 +16,6 @@ class RegistrationApiView(APIView):
     """
     permission_classes = (AllowAny, )
     serializer_class = RegistrationSerializer
-    renderer_classes = (UserJSONRenderer, )
 
     def post(self, request):
         user = request.data.get('user', {})
@@ -34,7 +32,6 @@ class LoginApiView(APIView):
     """
     permission_classes = (AllowAny, )
     serializer_class = LoginSerializer
-    renderer_classes = (UserJSONRenderer, )
 
     def post(self, request):
         user = request.data.get('user', {})
@@ -49,7 +46,6 @@ class UserRetrieveUpdateApiView(RetrieveUpdateAPIView):
     class UserRetrieveUpdateApiView
     """
     permission_classes = (IsAuthenticated, )
-    renderer_classes = (UserJSONRenderer, )
     serializer_class = UserSerializer
 
     def retrieve(self, request, *args, **kwargs):
