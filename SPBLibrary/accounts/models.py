@@ -51,18 +51,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         """
         return self._generate_jwt_token()
 
-    def get_full_name(self):
-        """
-        full name of user for django
-        """
-        return self.email
-
-    def get_short_name(self):
-        """
-        short name of user for django
-        """
-        return self.email
-
     def _generate_jwt_token(self):
         """
         generate jwt token
